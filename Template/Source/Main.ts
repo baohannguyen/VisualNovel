@@ -7,28 +7,28 @@ namespace Template {
   export let transition = { //Transition runterladen und in einem Ordner speichern
     puzzle: {
       duration: 1,
-      alpha: "", //relative Pfade
+      alpha: "FreeTransitions/Others/hearts.jpg", //relative Pfade
       edge: 1 //Härtegrad
     }
   };
 
   export let sound = {
     //SFX
-    drop: "Audio/drop.mp3" //Pfad kommt da rein
+    drop: "Audio/mixkit-retro-game-notification-212-wav" //Pfad kommt da rein
     //Audio Ordner noch kopieren
   };
 
   export let locations = {
     // Backgrounds kopieren
-    beachDay: {
+    benchPlace: {
       // Hintergrund hat mehrere Ebenen
-      name: "Beach Day",
-      background: "" // Pfad kommt hin
+      name: "Park Day",
+      background: "Background/bg_bench.png" // Pfad kommt hin
       // foreground: ""
     }
   };
 
-  export let chracters = {
+  export let characters = {
     narrator: {
       // name: ""  Anzeigename vom Narrator
     },
@@ -39,9 +39,9 @@ namespace Template {
       name: "Aisaka",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        angry: "", //Pfad des Bildes
-        happy: "",
-        upset: ""
+        angry: "Images/Characters/aisaka_angry.png", //Pfad des Bildes
+        happy: "Images/Characters/aisaka_happy.png",
+        upset: "Images/Characters/aisaka_upset.png"
       } 
     }
   };
