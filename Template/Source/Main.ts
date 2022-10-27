@@ -43,6 +43,15 @@ namespace Template {
         happy: "Images/Characters/aisaka_happy.png",
         upset: "Images/Characters/aisaka_upset.png"
       } 
+    },
+    komi: {
+      name: "Komi",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        angry: "Images/Characters/aisaka_angry.png", //Pfad des Bildes
+        happy: "Images/Characters/aisaka_happy.png",
+        upset: "Images/Characters/aisaka_upset.png"
+      } 
     }
   };
 
@@ -54,7 +63,7 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: ƒS.Scenes = [
-      { scene: Scene, name: "Scene" }
+      { scene: Scene, name: "First Scene" }
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
