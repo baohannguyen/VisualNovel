@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Tutorial_SS22.css">
+  <script src="../Fudge/FudgeCore.js"></script>
+  <script src="./../Build/FudgeStory.js"></script>
+  <script src="./Build/Tutorial_SS22.js"></script>
+  <title>Tutorial_SS22</title>
+  <!-- <splash src="Images/BubblyGirl.png" /> -->
+</head>
+
+<body>
+  <scene>
+    <canvas></canvas>
+    <speech>
+      <name>
+        <!-- The name of the character speaking -->
+      </name>
+      <content>
+        <!-- The text the character says -->
+      </content>
+    </speech>
+    <dialog type="text">
+      The content of a page of text for reading
+    </dialog>
+    <dialog type="inventory">
+      <button type="button">close</button>
+      <ul>
+        <!-- <li>a description could be written in here</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+        <li>e</li> -->
+      </ul>
+    </dialog>
+    <!-- Aisaka Meterbar -->
+    <div type="interface">
+      <input id="scoreForAisaka" type="text" value="Aisaka" disabled>
+      <!-- für value der Skala; Füllung -->
+      <meter id="aisakaMeter" name="aisakaScore" min="0" max="100" disabled></meter>
+    </div>
+  </scene>
+  <dialog type="splash" open>
+    <img id="FudgeStoryLogo" theme="dark" /> <!-- use "light" or "dark" -->
+    <p>
+      Fudge Story Tutorial SS22
+    </p>
+  </dialog>
+
+</body>
+
+</html>

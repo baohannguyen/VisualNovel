@@ -1,31 +1,35 @@
 "use strict";
-var Template;
-(function (Template) {
-    Template.ƒ = FudgeCore;
-    Template.ƒS = FudgeStory;
+var Novel;
+(function (Novel) {
+    Novel.ƒ = FudgeCore;
+    Novel.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
-    Template.transition = {
+    Novel.transition = {
         puzzle: {
             duration: 1,
             alpha: "FreeTransitions/Others/hearts.jpg",
             edge: 1 //Härtegrad
         }
     };
-    Template.sound = {
+    Novel.sound = {
         //SFX
         drop: "Audio/mixkit-retro-game-notification-212-wav" //Pfad kommt da rein
         //Audio Ordner noch kopieren
     };
-    Template.locations = {
+    Novel.locations = {
         // Backgrounds kopieren
-        benchPlace: {
+        park: {
             // Hintergrund hat mehrere Ebenen
             name: "Park Day",
             background: "Background/bg_bench.png" // Pfad kommt hin
             // foreground: ""
+        },
+        sunset: {
+            name: "Sunset",
+            background: "Background/bg_city_sunset.png"
         }
     };
-    Template.characters = {
+    Novel.characters = {
         narrator: {
         // name: ""  Anzeigename vom Narrator
         },
@@ -34,7 +38,7 @@ var Template;
         },
         aisaka: {
             name: "Aisaka",
-            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "Images/Characters/aisaka_angry.png",
                 happy: "Images/Characters/aisaka_happy.png",
@@ -43,7 +47,7 @@ var Template;
         },
         komi: {
             name: "Komi",
-            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "Images/Characters/aisaka_angry.png",
                 happy: "Images/Characters/aisaka_happy.png",
@@ -51,37 +55,59 @@ var Template;
             }
         }
     };
-    Template.dataForSave = {
+    Novel.dataForSave = {
         nameProtagonist: ""
     };
     window.addEventListener("load", start);
     function start(_event) {
         let scenes = [
-            { scene: Template.Scene, name: "First Scene" }
+            { scene: Novel.firstScene, name: "Park Scene" },
+            { scene: Novel.secondScene, name: "Sunset Scene" }
         ];
         let uiElement = document.querySelector("[type=interface]");
-        Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
+        Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
         // start the sequence
-        Template.ƒS.Progress.go(scenes);
+        Novel.ƒS.Progress.go(scenes);
     }
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
-    async function Scene() {
-        console.log("FudgeStory Template Scene starting"); //Name der Szene
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function firstScene() {
+        console.log("First Scene"); //Name der Szene
         let text = {
             Komi: {
-                T001: "Hallo",
-                T002: "Alles gut soweit?",
-                T003: "Anderer Text"
+                TX01: "Hallo",
+                TX02: "Alles gut soweit?",
+                TX03: "Mein Name ist Komi."
             }
         };
-        Template.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
-        await Template.ƒS.Location.show(Template.locations.benchPlace);
-        await Template.ƒS.Character.show(Template.characters.komi, Template.characters.komi.pose.happy, Template.ƒS.positionPercent(70, 100));
-        await Template.ƒS.update(); //Nach jeder Szene updaten
-        await Template.ƒS.Speech.tell(Template.characters.komi, text.Komi.T001); //hier spricht der Charakter; bei text muss man nie updaten
+        Novel.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
+        await Novel.ƒS.Location.show(Novel.locations.park);
+        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+        await Novel.ƒS.update(); //Nach jeder Szene updaten
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01); //hier spricht der Charakter; bei text muss man nie updaten
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX03);
     }
-    Template.Scene = Scene;
-})(Template || (Template = {}));
+    Novel.firstScene = firstScene;
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function secondScene() {
+        console.log("Second Scene");
+        let text = {
+            Komi: {
+                TX01: "Danke fürs Begleiten.",
+                TX02: "Der Ort ist sehr schön."
+            }
+        };
+        Novel.ƒS.Speech.hide();
+        await Novel.ƒS.Location.show(Novel.locations.sunset);
+        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+        await Novel.ƒS.update();
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01);
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
+    }
+    Novel.secondScene = secondScene;
+})(Novel || (Novel = {}));
 //# sourceMappingURL=Template.js.map

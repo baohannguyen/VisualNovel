@@ -1,4 +1,4 @@
-namespace Template {
+namespace Novel {
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
 
@@ -20,11 +20,15 @@ namespace Template {
 
   export let locations = {
     // Backgrounds kopieren
-    benchPlace: {
+    park: {
       // Hintergrund hat mehrere Ebenen
       name: "Park Day",
       background: "Background/bg_bench.png" // Pfad kommt hin
       // foreground: ""
+    },
+    sunset: {
+      name: "Sunset",
+      background: "Background/bg_city_sunset.png"
     }
   };
 
@@ -63,7 +67,8 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: ƒS.Scenes = [
-      { scene: Scene, name: "First Scene" }
+      { scene: firstScene, name: "Park Scene" },
+      { scene: secondScene, name: "Sunset Scene" }
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

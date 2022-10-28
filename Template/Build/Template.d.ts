@@ -1,4 +1,4 @@
-declare namespace Template {
+declare namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
@@ -12,7 +12,11 @@ declare namespace Template {
         drop: string;
     };
     let locations: {
-        benchPlace: {
+        park: {
+            name: string;
+            background: string;
+        };
+        sunset: {
             name: string;
             background: string;
         };
@@ -45,6 +49,9 @@ declare namespace Template {
         nameProtagonist: string;
     };
 }
-declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
+declare namespace Novel {
+    function firstScene(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function secondScene(): ƒS.SceneReturn;
 }
