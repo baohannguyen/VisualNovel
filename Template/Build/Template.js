@@ -5,10 +5,10 @@ var Novel;
     Novel.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
     Novel.transition = {
-        puzzle: {
+        hearts: {
             duration: 1,
             alpha: "FreeTransitions/Others/hearts.jpg",
-            edge: 1 //Härtegrad
+            edge: 0.2 //Härtegrad
         }
     };
     Novel.sound = {
@@ -85,6 +85,7 @@ var Novel;
         await Novel.ƒS.Location.show(Novel.locations.park);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
         await Novel.ƒS.update(); //Nach jeder Szene updaten
+        //wenn man ne Zahl in die Klammer eingibt, dann zeigt es die Fade-Transition an
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01); //hier spricht der Charakter; bei text muss man nie updaten
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX03);
@@ -103,10 +104,31 @@ var Novel;
         };
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.sunset);
+        await Novel.ƒS.update(Novel.transition.hearts.duration, Novel.transition.hearts.alpha, Novel.transition.hearts.edge);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
+        //Entscheidungsmöglichkeiten
+        let dialogue = {
+            sayYes: "Yes",
+            sayOk: "Ok",
+            sayNo: "No"
+        };
+        let dialogueElement = await Novel.ƒS.Menu.getInput(dialogue, "choicesCSSClass");
+        // do-while Schleife ist auch eine Möglichkeit
+        switch (dialogueElement) {
+            case dialogue.sayYes:
+                console.log("test");
+                break;
+            case dialogue.sayOk:
+                console.log("test");
+                await Novel.ƒS.Speech.tell(Novel.characters.komi, "Ok");
+                break;
+            case dialogue.sayNo:
+                console.log("test");
+                break;
+        }
     }
     Novel.secondScene = secondScene;
 })(Novel || (Novel = {}));

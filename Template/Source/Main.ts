@@ -5,10 +5,10 @@ namespace Novel {
   console.log("FudgeStory template starting");
 
   export let transition = { //Transition runterladen und in einem Ordner speichern
-    puzzle: {
+    hearts: {
       duration: 1,
       alpha: "FreeTransitions/Others/hearts.jpg", //relative Pfade
-      edge: 1 //Härtegrad
+      edge: 0.2 //Härtegrad
     }
   };
 

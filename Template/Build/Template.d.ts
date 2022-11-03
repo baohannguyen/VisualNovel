@@ -2,7 +2,7 @@ declare namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
-        puzzle: {
+        hearts: {
             duration: number;
             alpha: string;
             edge: number;
