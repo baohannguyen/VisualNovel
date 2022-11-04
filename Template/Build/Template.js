@@ -12,12 +12,10 @@ var Novel;
         }
     };
     Novel.sound = {
-        //SFX
-        drop: "Audio/mixkit-retro-game-notification-212-wav" //Pfad kommt da rein
-        //Audio Ordner noch kopieren
+        //Theme
+        loungeTheme: "Audio/Themes/thelounge.mp3" //« Music by: Bensound.com/royalty-free-music »
     };
     Novel.locations = {
-        // Backgrounds kopieren
         park: {
             // Hintergrund hat mehrere Ebenen
             name: "Park Day",
@@ -82,6 +80,7 @@ var Novel;
             }
         };
         Novel.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
+        Novel.ƒS.Sound.play(Novel.sound.loungeTheme, 0.4, false);
         await Novel.ƒS.Location.show(Novel.locations.park);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
         await Novel.ƒS.update(); //Nach jeder Szene updaten
@@ -109,26 +108,55 @@ var Novel;
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
+        await Novel.ƒS.Character.hide(Novel.characters.komi);
+        await Novel.ƒS.update();
         //Entscheidungsmöglichkeiten
-        let dialogue = {
-            sayYes: "Yes",
+        let choicesSunset = {
+            sayYes: "Ja",
             sayOk: "Ok",
-            sayNo: "No"
+            sayNo: "Nicht wirklich"
         };
-        let dialogueElement = await Novel.ƒS.Menu.getInput(dialogue, "choicesCSSClass");
+        // let choicesNewSunset = {
+        //     beach: "Wir können zum Strand gehen",
+        //     mall: "Lass uns shoppen gehen"
+        // };
+        let dialogueElement = await Novel.ƒS.Menu.getInput(choicesSunset, "choicesCSSClass");
+        // let dialogueElement1 = await ƒS.Menu.getInput(choicesNewSunset, "choicesCSSClass");
         // do-while Schleife ist auch eine Möglichkeit
         switch (dialogueElement) {
-            case dialogue.sayYes:
+            case choicesSunset.sayYes:
                 console.log("test");
+                await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+                await Novel.ƒS.update();
+                await Novel.ƒS.Speech.tell(Novel.characters.komi, "Das freut mich zu hören.");
                 break;
-            case dialogue.sayOk:
+            case choicesSunset.sayOk:
                 console.log("test");
+                await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+                await Novel.ƒS.update();
                 await Novel.ƒS.Speech.tell(Novel.characters.komi, "Ok");
                 break;
-            case dialogue.sayNo:
+            case choicesSunset.sayNo:
                 console.log("test");
+                await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.upset, Novel.ƒS.positionPercent(50, 105));
+                await Novel.ƒS.update();
+                await Novel.ƒS.Speech.tell(Novel.characters.komi, "Oh, sollen wir dann woanders hingehen?");
                 break;
         }
+        // switch (dialogueElement1) {
+        //     case choicesNewSunset.beach:
+        //         console.log("beach");
+        //         await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+        //         await ƒS.update();
+        //         await ƒS.Speech.tell(characters.komi, "Super, ich wollte schon immer den Strand besuchen.");
+        //         break;
+        //     case choicesNewSunset.mall:
+        //         console.log("mall");
+        //         await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+        //         await ƒS.update();
+        //         await ƒS.Speech.tell(characters.komi, "Super, ich wollte schon immer mit dir shoppen gehen.");
+        //         break;
+        // }
     }
     Novel.secondScene = secondScene;
 })(Novel || (Novel = {}));

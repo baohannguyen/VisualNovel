@@ -9,7 +9,7 @@ declare namespace Novel {
         };
     };
     let sound: {
-        drop: string;
+        loungeTheme: string;
     };
     let locations: {
         park: {

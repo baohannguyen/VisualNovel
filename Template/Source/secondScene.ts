@@ -15,31 +15,60 @@ namespace Novel {
         await ƒS.update();
         await ƒS.Speech.tell(characters.komi, text.Komi.TX01);
         await ƒS.Speech.tell(characters.komi, text.Komi.TX02);
+        await ƒS.Character.hide(characters.komi);
+        await ƒS.update();
 
         //Entscheidungsmöglichkeiten
-        let dialogue = {
-            sayYes: "Yes",
+        let choicesSunset = {
+            sayYes: "Ja",
             sayOk: "Ok",
-            sayNo: "No"
+            sayNo: "Nicht wirklich"
         };
 
-        let dialogueElement = await ƒS.Menu.getInput(dialogue, "choicesCSSClass");
+        // let choicesNewSunset = {
+        //     beach: "Wir können zum Strand gehen",
+        //     mall: "Lass uns shoppen gehen"
+        // };
+
+        let dialogueElement = await ƒS.Menu.getInput(choicesSunset, "choicesCSSClass");
+        // let dialogueElement1 = await ƒS.Menu.getInput(choicesNewSunset, "choicesCSSClass");
 
         // do-while Schleife ist auch eine Möglichkeit
-        
+
         switch (dialogueElement) {
-            case dialogue.sayYes:
+            case choicesSunset.sayYes:
                 console.log("test");
+                await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+                await ƒS.update();
+                await ƒS.Speech.tell(characters.komi, "Das freut mich zu hören.");
                 break;
-            case dialogue.sayOk:
+            case choicesSunset.sayOk:
                 console.log("test");
+                await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+                await ƒS.update();
                 await ƒS.Speech.tell(characters.komi, "Ok");
                 break;
-            case dialogue.sayNo:
+            case choicesSunset.sayNo:
                 console.log("test");
+                await ƒS.Character.show(characters.komi, characters.komi.pose.upset, ƒS.positionPercent(50, 105));
+                await ƒS.update();
+                await ƒS.Speech.tell(characters.komi, "Oh, sollen wir dann woanders hingehen?");
                 break;
-                
+
         }
-        
+        // switch (dialogueElement1) {
+        //     case choicesNewSunset.beach:
+        //         console.log("beach");
+        //         await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+        //         await ƒS.update();
+        //         await ƒS.Speech.tell(characters.komi, "Super, ich wollte schon immer den Strand besuchen.");
+        //         break;
+        //     case choicesNewSunset.mall:
+        //         console.log("mall");
+        //         await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+        //         await ƒS.update();
+        //         await ƒS.Speech.tell(characters.komi, "Super, ich wollte schon immer mit dir shoppen gehen.");
+        //         break;
+        // }
     }
 }

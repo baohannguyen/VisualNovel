@@ -13,13 +13,11 @@ namespace Novel {
   };
 
   export let sound = {
-    //SFX
-    drop: "Audio/mixkit-retro-game-notification-212-wav" //Pfad kommt da rein
-    //Audio Ordner noch kopieren
+    //Theme
+    loungeTheme: "Audio/Themes/thelounge.mp3" //« Music by: Bensound.com/royalty-free-music »
   };
 
   export let locations = {
-    // Backgrounds kopieren
     park: {
       // Hintergrund hat mehrere Ebenen
       name: "Park Day",
