@@ -53,11 +53,63 @@ var Novel;
             }
         }
     };
+    // alles was wir speichern wollen, wenn man auf den Button "Speichern" klickt, sollen auch gespeichert werden
     Novel.dataForSave = {
         nameProtagonist: ""
     };
+    //Menu
+    let inGameMenuButtons = {
+        save: "Save",
+        load: "Load",
+        close: "Close"
+    };
+    let gameMenu;
+    // true = Menü ist offen 
+    let menuIsOpen = true;
+    async function buttonFunctions(_option) {
+        console.log(_option);
+        switch (_option) {
+            case inGameMenuButtons.save:
+                await Novel.ƒS.Progress.save();
+                break;
+            case inGameMenuButtons.load:
+                await Novel.ƒS.Progress.load();
+            case inGameMenuButtons.close:
+                gameMenu.close();
+                menuIsOpen = false; //false = Menü ist zu
+                break;
+        }
+    }
+    // Menü shortcuts
+    document.addEventListener("keydown", hndKeyPress);
+    async function hndKeyPress(_event) {
+        switch (_event.code) {
+            case Novel.ƒ.KEYBOARD_CODE.F:
+                console.log("Save");
+                await Novel.ƒS.Progress.save();
+                break;
+            case Novel.ƒ.KEYBOARD_CODE.G:
+                console.log("Load");
+                await Novel.ƒS.Progress.load();
+                break;
+            case Novel.ƒ.KEYBOARD_CODE.M:
+                if (menuIsOpen) {
+                    console.log("Close");
+                    gameMenu.close();
+                    menuIsOpen = false;
+                }
+                else {
+                    console.log("Open");
+                    gameMenu.open();
+                    menuIsOpen = true;
+                }
+                break;
+        }
+    }
     window.addEventListener("load", start);
     function start(_event) {
+        gameMenu = Novel.ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
+        buttonFunctions("Close");
         let scenes = [
             { scene: Novel.firstScene, name: "Park Scene" },
             { scene: Novel.secondScene, name: "Sunset Scene" }
@@ -80,7 +132,7 @@ var Novel;
             }
         };
         Novel.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
-        Novel.ƒS.Sound.play(Novel.sound.loungeTheme, 0.4, false);
+        // ƒS.Sound.play(sound.loungeTheme, 0.4, false);
         await Novel.ƒS.Location.show(Novel.locations.park);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
         await Novel.ƒS.update(); //Nach jeder Szene updaten

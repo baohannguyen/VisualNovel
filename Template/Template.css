@@ -14,7 +14,11 @@ scene {
   width: 1280px;
   height: 720px;
   display: inline-block;
- 
+  position: absolute;
+}
+canvas {
+  width: 100%;
+  height: 100%;
 }
 
  dialog[type=splash] { /*bezieht sich auf den weißen Block mit der Beschreibung */
@@ -37,6 +41,7 @@ dialog[type=splash]>img#FudgeStoryLogo {
 speech {
   position: absolute;
   bottom: 0px;
+  left: 0px;
   color: beige;
   background-color: rgb(57, 56, 57);
   width: 100%;
@@ -58,10 +63,6 @@ name {
   margin-left: 5px;
 }
 
-canvas {
-  width: 125%;
-  height: 100%;
-}
 /* .choicesCSSClass {
   width: 300px;
   padding: 20px;
