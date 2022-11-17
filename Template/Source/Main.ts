@@ -57,10 +57,36 @@ namespace Novel {
     }
   };
 
-// alles was wir speichern wollen, wenn man auf den Button "Speichern" klickt, sollen auch gespeichert werden
+  // alles was wir speichern wollen, wenn man auf den Button "Speichern" klickt, sollen auch gespeichert werden
   export let dataForSave = {
     nameProtagonist: ""
   };
+
+  export function examAnimation(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positions.bottomcenter, color: ƒS.Color.CSS("blue", 1)
+      },
+      end: {
+        translation: ƒS.positions.bottomleft, color: ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
+      },
+      duration: 3,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    };
+
+  }
+
+  export function getAnimation(): ƒS.AnimationDefinition {
+    return {
+    start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
+    end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
+    duration: 1,
+    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    };
+    }
+
+
+
 
   //Menu
   let inGameMenuButtons = {
@@ -111,22 +137,22 @@ namespace Novel {
         else {
           console.log("Open");
           gameMenu.open();
-          menuIsOpen = true;  
+          menuIsOpen = true;
         }
         break;
-        
-      
+
+
     }
   }
-
 
   window.addEventListener("load", start);
   function start(_event: Event): void {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
     buttonFunctions("Close");
     let scenes: ƒS.Scenes = [
-      { scene: firstScene, name: "Park Scene" },
-      { scene: secondScene, name: "Sunset Scene" }
+      // { scene: firstScene, name: "Park Scene" },
+      // { scene: secondScene, name: "Sunset Scene" },
+      { scene: thirdScene, name: "Animation Scene" }
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

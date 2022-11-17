@@ -48,10 +48,15 @@ declare namespace Novel {
     let dataForSave: {
         nameProtagonist: string;
     };
+    function examAnimation(): ƒS.AnimationDefinition;
+    function getAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Novel {
     function firstScene(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function secondScene(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function thirdScene(): ƒS.SceneReturn;
 }

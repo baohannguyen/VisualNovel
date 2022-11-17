@@ -57,6 +57,28 @@ var Novel;
     Novel.dataForSave = {
         nameProtagonist: ""
     };
+    function examAnimation() {
+        return {
+            start: {
+                translation: Novel.ƒS.positions.bottomcenter, color: Novel.ƒS.Color.CSS("blue", 1)
+            },
+            end: {
+                translation: Novel.ƒS.positions.bottomleft, color: Novel.ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
+            },
+            duration: 3,
+            playmode: Novel.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Novel.examAnimation = examAnimation;
+    function getAnimation() {
+        return {
+            start: { translation: Novel.ƒS.positions.bottomleft, rotation: -20, scaling: new Novel.ƒS.Position(0.5, 1.5), color: Novel.ƒS.Color.CSS("white", 0.3) },
+            end: { translation: Novel.ƒS.positions.bottomright, rotation: 20, scaling: new Novel.ƒS.Position(1.5, 0.5), color: Novel.ƒS.Color.CSS("red") },
+            duration: 1,
+            playmode: Novel.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Novel.getAnimation = getAnimation;
     //Menu
     let inGameMenuButtons = {
         save: "Save",
@@ -111,8 +133,9 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
         buttonFunctions("Close");
         let scenes = [
-            { scene: Novel.firstScene, name: "Park Scene" },
-            { scene: Novel.secondScene, name: "Sunset Scene" }
+            // { scene: firstScene, name: "Park Scene" },
+            // { scene: secondScene, name: "Sunset Scene" },
+            { scene: Novel.thirdScene, name: "Animation Scene" }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
@@ -211,5 +234,19 @@ var Novel;
         // }
     }
     Novel.secondScene = secondScene;
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function thirdScene() {
+        console.log("Third Scene");
+        //Animation-Beispiiel
+        Novel.ƒS.Speech.hide();
+        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+        await Novel.ƒS.Location.show(Novel.locations.sunset);
+        Novel.ƒS.update();
+        // await ƒS.Character.animate(characters.komi, characters.komi.pose.happy, examAnimation());
+        await Novel.ƒS.Character.animate(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.getAnimation());
+    }
+    Novel.thirdScene = thirdScene;
 })(Novel || (Novel = {}));
 //# sourceMappingURL=Template.js.map
