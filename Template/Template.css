@@ -3,9 +3,10 @@ html, body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
+  background-color: black;
   overflow: hidden;
   font-family: "Segoe UI", Arial;
-  /* font-weight: normal; */
+  font-weight: normal;
   font-size: 2.3vmin;
   color: rgb(240, 18, 103);
   user-select: none;
@@ -21,7 +22,26 @@ canvas {
   height: 100%;
 }
 
- dialog[type=splash] { /*bezieht sich auf den weißen Block mit der Beschreibung */
+dialog[type="splash"] {
+  background-image: url("Images/Backgrounds/space.jpg"); 
+  width: 100%;
+  height: 100%;
+}
+
+dialog[type="splash"] > p {
+  font-size: 2vmin;
+  color: white;
+  text-align: center;
+}
+
+#FudgeStoryLogo {
+  display: block;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+ /* dialog[type=splash] { 
   margin: 0px;
   padding: 0px;
   width: 100vw;
@@ -31,13 +51,13 @@ canvas {
   border: none;
   cursor: pointer;
   text-align: center;
-}
-dialog[type=splash]>img#FudgeStoryLogo {
+} */
+/* dialog[type=splash]>img#FudgeStoryLogo {
   
-  /* background-image: url("Background/alexander-grey-62vi3TG5EDg-unsplash.jpg"); */
+  
   width: 50%;
 
-}
+} */
 speech {
   position: absolute;
   bottom: 0px;
