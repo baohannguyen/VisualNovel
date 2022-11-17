@@ -54,8 +54,8 @@ namespace Novel {
                 await ƒS.update();
                 await ƒS.Speech.tell(characters.komi, "Oh, sollen wir dann woanders hingehen?");
                 break;
-
         }
+       
         // switch (dialogueElement1) {
         //     case choicesNewSunset.beach:
         //         console.log("beach");
