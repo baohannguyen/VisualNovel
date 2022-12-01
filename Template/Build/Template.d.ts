@@ -45,14 +45,26 @@ declare namespace Novel {
             };
         };
     };
+    let items: {
+        item1: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+    };
     let dataForSave: {
         nameProtagonist: string;
+        interrupt: boolean;
+        characterPoints: number;
     };
     function examAnimation(): ƒS.AnimationDefinition;
     function getAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Novel {
     function firstScene(): ƒS.SceneReturn;
+}
+declare namespace Novel {
 }
 declare namespace Novel {
     function secondScene(): ƒS.SceneReturn;

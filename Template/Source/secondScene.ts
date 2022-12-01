@@ -41,6 +41,7 @@ namespace Novel {
                 await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
                 await ƒS.update();
                 await ƒS.Speech.tell(characters.komi, "Das freut mich zu hören.");
+                //dataForSave.characterPoints += 10; // damit kann man Punkte verteilen
                 break;
             case choicesSunset.sayOk:
                 console.log("test");

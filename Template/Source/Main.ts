@@ -57,9 +57,22 @@ namespace Novel {
     }
   };
 
+  // Items für inventory
+  export let items = {
+    item1: {
+      name: "Item 1",
+      description: "Beschreibung des Items", //das was unter dem item angezeigt wird
+      image: "Images/Splash.png", //Pfad des Bildes
+      static: true //wenn man es als konsumierbares Objekt benutzen möchte dann true
+    }
+  };
+
   // alles was wir speichern wollen, wenn man auf den Button "Speichern" klickt, sollen auch gespeichert werden
+  // hier kommt alles rein, was der Spieler speichern möchte
   export let dataForSave = {
-    nameProtagonist: ""
+    nameProtagonist: "",
+    interrupt: false, //booleasche werte kann man hier festlegen und danach im Dialog wiederverwenden
+    characterPoints: 0
   };
 
   export function examAnimation(): ƒS.AnimationDefinition {
@@ -78,21 +91,24 @@ namespace Novel {
 
   export function getAnimation(): ƒS.AnimationDefinition {
     return {
-    start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-    end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-    duration: 1,
-    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+      start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
+      end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     };
-    }
+  }
 
 
-
+  // function credits(): void {
+  //   ƒS.Text.print("");
+  // }
 
   //Menu
   let inGameMenuButtons = {
     save: "Save",
     load: "Load",
-    close: "Close"
+    close: "Close",
+    credits: "Credits"
   };
 
   let gameMenu: ƒS.Menu;
