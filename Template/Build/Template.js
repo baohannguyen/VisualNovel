@@ -48,7 +48,7 @@ var Novel;
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "Images/Characters/aisaka_angry.png",
-                happy: "Images/Characters/aisaka_happy.png",
+                happy: "Images/celeste_smiling_transparent.png",
                 upset: "Images/Characters/aisaka_upset.png"
             }
         }
@@ -69,19 +69,18 @@ var Novel;
         interrupt: false,
         characterPoints: 0
     };
-    function examAnimation() {
-        return {
-            start: {
-                translation: Novel.ƒS.positions.bottomcenter, color: Novel.ƒS.Color.CSS("blue", 1)
-            },
-            end: {
-                translation: Novel.ƒS.positions.bottomleft, color: Novel.ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
-            },
-            duration: 3,
-            playmode: Novel.ƒS.ANIMATION_PLAYMODE.PLAYONCE
-        };
-    }
-    Novel.examAnimation = examAnimation;
+    // export function examAnimation(): ƒS.AnimationDefinition {
+    //   return {
+    //     start: {
+    //       translation: ƒS.positions.bottomcenter, color: ƒS.Color.CSS("blue", 1)
+    //     },
+    //     end: {
+    //       translation: ƒS.positions.bottomleft, color: ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
+    //     },
+    //     duration: 3,
+    //     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    //   };
+    // }
     function getAnimation() {
         return {
             start: { translation: Novel.ƒS.positions.bottomleft, rotation: -20, scaling: new Novel.ƒS.Position(0.5, 1.5), color: Novel.ƒS.Color.CSS("white", 0.3) },
@@ -149,9 +148,9 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
         buttonFunctions("Close");
         let scenes = [
-            // { scene: firstScene, name: "Park Scene" },
-            // { scene: secondScene, name: "Sunset Scene" },
-            { scene: Novel.thirdScene, name: "Animation Scene" }
+            { scene: Novel.firstScene, name: "Park Scene" },
+            { scene: Novel.secondScene, name: "Sunset Scene" }
+            //{ scene: thirdScene, name: "Animation Scene" }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
@@ -180,9 +179,9 @@ var Novel;
         await Novel.ƒS.update(); //Nach jeder Szene updaten
         //wenn man ne Zahl in die Klammer eingibt, dann zeigt es die Fade-Transition an
         //ƒS.Inventory.add(items.item1.)
-        for (let i = 0; 1 < 5; i++) {
-            Novel.ƒS.Inventory.add(Novel.items.item1);
-        }
+        // for (let i: number = 0; 1 < 5; i++) {
+        //   ƒS.Inventory.add(items.item1);
+        // }
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01); //hier spricht der Charakter; bei text muss man nie updaten
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX03);

@@ -58,7 +58,6 @@ declare namespace Novel {
         interrupt: boolean;
         characterPoints: number;
     };
-    function examAnimation(): ƒS.AnimationDefinition;
     function getAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Novel {

@@ -51,7 +51,7 @@ namespace Novel {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         angry: "Images/Characters/aisaka_angry.png", //Pfad des Bildes
-        happy: "Images/Characters/aisaka_happy.png",
+        happy: "Images/celeste_smiling_transparent.png",
         upset: "Images/Characters/aisaka_upset.png"
       }
     }
@@ -75,19 +75,19 @@ namespace Novel {
     characterPoints: 0
   };
 
-  export function examAnimation(): ƒS.AnimationDefinition {
-    return {
-      start: {
-        translation: ƒS.positions.bottomcenter, color: ƒS.Color.CSS("blue", 1)
-      },
-      end: {
-        translation: ƒS.positions.bottomleft, color: ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
-      },
-      duration: 3,
-      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-    };
+  // export function examAnimation(): ƒS.AnimationDefinition {
+  //   return {
+  //     start: {
+  //       translation: ƒS.positions.bottomcenter, color: ƒS.Color.CSS("blue", 1)
+  //     },
+  //     end: {
+  //       translation: ƒS.positions.bottomleft, color: ƒS.Color.CSS("red", 0) //Figur verschwindete, weil Transparenz = 0 ist
+  //     },
+  //     duration: 3,
+  //     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+  //   };
 
-  }
+  // }
 
   export function getAnimation(): ƒS.AnimationDefinition {
     return {
@@ -166,9 +166,9 @@ namespace Novel {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
     buttonFunctions("Close");
     let scenes: ƒS.Scenes = [
-      // { scene: firstScene, name: "Park Scene" },
-      // { scene: secondScene, name: "Sunset Scene" },
-      { scene: thirdScene, name: "Animation Scene" }
+      { scene: firstScene, name: "Park Scene" },
+      { scene: secondScene, name: "Sunset Scene" }
+      //{ scene: thirdScene, name: "Animation Scene" }
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
