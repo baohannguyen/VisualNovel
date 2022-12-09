@@ -48,7 +48,7 @@ var Novel;
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "Images/Characters/aisaka_angry.png",
-                happy: "Images/celeste_smiling_transparent.png",
+                happy: "Images/celesteTest2.png",
                 upset: "Images/Characters/aisaka_upset.png"
             }
         }
@@ -175,7 +175,7 @@ var Novel;
         Novel.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
         // ƒS.Sound.play(sound.loungeTheme, 0.4, false);
         await Novel.ƒS.Location.show(Novel.locations.park);
-        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));
+        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(); //Nach jeder Szene updaten
         //wenn man ne Zahl in die Klammer eingibt, dann zeigt es die Fade-Transition an
         //ƒS.Inventory.add(items.item1.)

@@ -51,7 +51,7 @@ namespace Novel {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         angry: "Images/Characters/aisaka_angry.png", //Pfad des Bildes
-        happy: "Images/celeste_smiling_transparent.png",
+        happy: "Images/celesteTest2.png",
         upset: "Images/Characters/aisaka_upset.png"
       }
     }

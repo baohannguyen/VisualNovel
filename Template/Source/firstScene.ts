@@ -16,7 +16,7 @@ namespace Novel {
     ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
     // ƒS.Sound.play(sound.loungeTheme, 0.4, false);
     await ƒS.Location.show(locations.park);
-    await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));
+    await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(30, 100));
     await ƒS.update(); //Nach jeder Szene updaten
     //wenn man ne Zahl in die Klammer eingibt, dann zeigt es die Fade-Transition an
     //ƒS.Inventory.add(items.item1.)
