@@ -98,7 +98,7 @@ var Novel;
         save: "Save",
         load: "Load",
         close: "Close",
-        credits: "Credits"
+        credits: "Credits" //Credits in einer Novel Page machen
     };
     let gameMenu;
     // true = Menü ist offen 
@@ -149,7 +149,10 @@ var Novel;
         buttonFunctions("Close");
         let scenes = [
             { scene: Novel.firstScene, name: "Park Scene" },
-            { scene: Novel.secondScene, name: "Sunset Scene" }
+            { scene: Novel.secondScene, name: "Sunset Scene" },
+            { id: "", scene: Novel.thirdScene, name: "Test", next: "" }
+            // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
+            // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
             //{ scene: thirdScene, name: "Animation Scene" }
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -182,9 +185,13 @@ var Novel;
         // for (let i: number = 0; 1 < 5; i++) {
         //   ƒS.Inventory.add(items.item1);
         // }
+        //return "id von der Szene"; // -> falls man mittendrin in eine andere Szene switchen möchte
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01); //hier spricht der Charakter; bei text muss man nie updaten
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX03);
+        // Novel Page (etwas wird auf dem Bildschirm ausgedruckt)
+        await Novel.ƒS.Text.print("Hello");
+        //ƒS.Text.addClass("CSSclass"); // damit kann man eine CSS Klasse für die Novel Page hinzufügen
         Novel.ƒS.Speech.clear(); //löscht den Text am Ende
     }
     Novel.firstScene = firstScene;

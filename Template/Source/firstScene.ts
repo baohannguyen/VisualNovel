@@ -23,10 +23,13 @@ namespace Novel {
     // for (let i: number = 0; 1 < 5; i++) {
     //   ƒS.Inventory.add(items.item1);
     // }
-
+    //return "id von der Szene"; // -> falls man mittendrin in eine andere Szene switchen möchte
     await ƒS.Speech.tell(characters.komi, text.Komi.TX01); //hier spricht der Charakter; bei text muss man nie updaten
     await ƒS.Speech.tell(characters.komi, text.Komi.TX02);
     await ƒS.Speech.tell(characters.komi, text.Komi.TX03);
+    // Novel Page (etwas wird auf dem Bildschirm ausgedruckt)
+    await ƒS.Text.print("Hello");
+    //ƒS.Text.addClass("CSSclass"); // damit kann man eine CSS Klasse für die Novel Page hinzufügen
     ƒS.Speech.clear(); //löscht den Text am Ende
   }
 }

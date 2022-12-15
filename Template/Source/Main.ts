@@ -108,7 +108,7 @@ namespace Novel {
     save: "Save",
     load: "Load",
     close: "Close",
-    credits: "Credits"
+    credits: "Credits" //Credits in einer Novel Page machen
   };
 
   let gameMenu: ƒS.Menu;
@@ -167,7 +167,10 @@ namespace Novel {
     buttonFunctions("Close");
     let scenes: ƒS.Scenes = [
       { scene: firstScene, name: "Park Scene" },
-      { scene: secondScene, name: "Sunset Scene" }
+      { scene: secondScene, name: "Sunset Scene" },
+      { id: "", scene: thirdScene, name: "Test", next: ""}
+      // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
+      // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
       //{ scene: thirdScene, name: "Animation Scene" }
     ];
 
