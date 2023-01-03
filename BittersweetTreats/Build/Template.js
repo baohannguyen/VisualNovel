@@ -1,22 +1,13 @@
-namespace Novel {
-    export import ƒ = FudgeCore;
-    export import ƒS = FudgeStory;
-
+"use strict";
+var Novel;
+(function (Novel) {
+    Novel.ƒ = FudgeCore;
+    Novel.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
-
-    export let transition = {
-
-    };
-
-    export let sounds = {
-
-    };
-
-    export let music = {
-
-    };
-
-    export let locations = {
+    Novel.transition = {};
+    Novel.sounds = {};
+    Novel.music = {};
+    Novel.locations = {
         classroom: {
             name: "Classroom",
             background: "Background/classroom.png"
@@ -37,67 +28,40 @@ namespace Novel {
             name: "Street Rain",
             background: "Background/street_rain.png"
         }
-
-
     };
-
-    export let characters = {
-        narrator: {
-
-        },
+    Novel.characters = {
+        narrator: {},
         celeste: {
             name: "Celeste",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: "Images/celeste_smiling_transparent.png"
-                
             }
-
         },
         celeste_mum: {
             name: "Mutter",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-
-            }
-
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {}
         },
         lucia: {
             name: "Lucia",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-
-            }
-
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {}
         },
         sophia: {
             name: "Sophia"
-
         },
         evan: {
             name: "Evan",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-
-            }
-
+            origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {}
         },
         customer: {
             name: "Kunde"
-
         }
-
-
     };
-
-    export let items = {
-
-    };
-
-    export let dataForSave = {
-
-    };
-
+    Novel.items = {};
+    Novel.dataForSave = {};
     // export function addAnimation(): ƒS.AnimationDefinition {
     //     return {
     //       start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
@@ -106,7 +70,6 @@ namespace Novel {
     //       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //     };
     //   }
-
     // Menü
     let menuButtons = {
         save: "Save",
@@ -114,40 +77,36 @@ namespace Novel {
         close: "Close",
         credits: "Credits"
     };
-
-    let gameMenu: ƒS.Menu;
-
+    let gameMenu;
     // true = Menü ist offen 
-    let menuIsOpen: boolean = true;
-
-    async function buttonFunctions(_option: string): Promise<void> {
+    let menuIsOpen = true;
+    async function buttonFunctions(_option) {
         console.log(_option);
         switch (_option) {
             case menuButtons.save:
-                await ƒS.Progress.save();
+                await Novel.ƒS.Progress.save();
                 break;
             case menuButtons.load:
-                await ƒS.Progress.load();
+                await Novel.ƒS.Progress.load();
             case menuButtons.close:
                 gameMenu.close();
                 menuIsOpen = false; //false = Menü ist zu
                 break;
         }
-
     }
     // Menü shortcuts
     document.addEventListener("keydown", hndKeyPress);
-    async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+    async function hndKeyPress(_event) {
         switch (_event.code) {
-            case ƒ.KEYBOARD_CODE.F:
+            case Novel.ƒ.KEYBOARD_CODE.F:
                 console.log("Save");
-                await ƒS.Progress.save();
+                await Novel.ƒS.Progress.save();
                 break;
-            case ƒ.KEYBOARD_CODE.G:
+            case Novel.ƒ.KEYBOARD_CODE.G:
                 console.log("Load");
-                await ƒS.Progress.load();
+                await Novel.ƒS.Progress.load();
                 break;
-            case ƒ.KEYBOARD_CODE.M:
+            case Novel.ƒ.KEYBOARD_CODE.M:
                 if (menuIsOpen) {
                     console.log("Close");
                     gameMenu.close();
@@ -159,28 +118,33 @@ namespace Novel {
                     menuIsOpen = true;
                 }
                 break;
-
-
         }
-
-
-
-
-
-
         window.addEventListener("load", start);
-        function start(_event: Event): void {
-            gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
+        function start(_event) {
+            gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
             buttonFunctions("Close");
-            let scenes: ƒS.Scenes = [
-                { scene: scene_1, name: "Conversation in the living room" }
+            let scenes = [
+                { scene: Novel.scene_1, name: "Conversation in the living room" }
             ];
-
-            let uiElement: HTMLElement = document.querySelector("[type=interface]");
-            dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
-
+            let uiElement = document.querySelector("[type=interface]");
+            Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
             // start the sequence
-            ƒS.Progress.go(scenes);
+            Novel.ƒS.Progress.go(scenes);
         }
     }
-}
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function scene_1() {
+        console.log("Conversation in the living room");
+        let text;
+        await Novel.ƒS.Location.show(Novel.locations.living_room);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral, Novel.ƒS.positionPercent(30, 70));
+        await Novel.ƒS.update();
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
+    }
+    Novel.scene_1 = scene_1;
+})(Novel || (Novel = {}));
+//# sourceMappingURL=Template.js.map
