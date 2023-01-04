@@ -70,8 +70,8 @@ namespace Novel {
             }
 
         },
-        sophia: {
-            name: "Sophia"
+        sophie: {
+            name: "Sophie"
 
         },
         evan: {
