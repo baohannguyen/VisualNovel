@@ -1,6 +1,6 @@
 namespace Novel {
     export async function scene_2(): ƒS.SceneReturn {
-        console.log("Talk at school");
+        console.log("Scene 2");
 
         let text = {
             celeste: {
@@ -14,9 +14,25 @@ namespace Novel {
                 TX08: "Danke Lucia, du hast immer eine Lösung zu meinen Problemen."
             },
             lucia: {
-                
+                TX01: "Das hört sich echt cool an. Hättet ihr Lust da mal vorbeizuschauen?",
+                TX02: "Wie sieht es bei dir aus Cel?",
+                TX03: "Cel?",
+                TX04: "Sophie hat einen Laden entdeckt mit vielen schönen Dekorationen und ich hab gefragt, ob wir alle mal hingehen wollen.",
+                TX05: "Aber ist eigentlich alles gut bei dir? Du bist in den letzten Tagen abwesend.",
+                TX06: "Worum ging es?",
+                TX07: "Hmm kennst du das Café 'Lovely Java'?",
+                TX08: "Genau, ich hab gehört, dass sie zurzeit nach Aushilfen suchen.",
+                TX09: "Das wäre eine gute Möglichkeit für dich, vor allem weil das Gehalt dort sehr gut sein soll und der Laden beliebt ist.",
+                TX10: "Hab ich doch gern gemacht."
+            },
+            sophie: {
+                TX01: "... da gibt es viele coole Sachen für dein Zimmer.",
+                TX02: "Ja klar."
             }
         };
+
+        await ƒS.Location.show(locations.classroom);
+        await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);
         
     }
 }

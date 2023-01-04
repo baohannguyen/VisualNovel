@@ -1,6 +1,6 @@
 namespace Novel {
     export async function scene_1(): ƒS.SceneReturn {
-        console.log("Conversation in the living room");
+        console.log("Scene 1");
 
         let text = {
             celeste: {
