@@ -50,7 +50,7 @@ namespace Novel {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: "Images/celeste_smiling_transparent.png"
-                
+
             }
 
         },
@@ -162,25 +162,25 @@ namespace Novel {
 
 
         }
-
-
-
-
-
-
-        window.addEventListener("load", start);
-        function start(_event: Event): void {
-            gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
-            buttonFunctions("Close");
-            let scenes: ƒS.Scenes = [
-                { scene: scene_1, name: "Conversation in the living room" }
-            ];
-
-            let uiElement: HTMLElement = document.querySelector("[type=interface]");
-            dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
-
-            // start the sequence
-            ƒS.Progress.go(scenes);
-        }
     }
+
+
+
+
+
+    window.addEventListener("load", start);
+    function start(_event: Event): void {
+        gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
+        buttonFunctions("Close");
+        let scenes: ƒS.Scenes = [
+            { scene: scene_1, name: "Conversation in the living room" }
+        ];
+
+        let uiElement: HTMLElement = document.querySelector("[type=interface]");
+        dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
+
+        // start the sequence
+        ƒS.Progress.go(scenes);
+    }
+
 }
