@@ -2,7 +2,7 @@ namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
 
-    console.log("FudgeStory template starting");
+    console.log("Bittersweet Treats starting");
 
     export let transition = {
 

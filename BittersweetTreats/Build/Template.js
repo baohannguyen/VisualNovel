@@ -3,7 +3,7 @@ var Novel;
 (function (Novel) {
     Novel.ƒ = FudgeCore;
     Novel.ƒS = FudgeStory;
-    console.log("FudgeStory template starting");
+    console.log("Bittersweet Treats starting");
     Novel.transition = {};
     Novel.sounds = {};
     Novel.music = {};
@@ -173,5 +173,25 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
     }
     Novel.scene_1 = scene_1;
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function scene_2() {
+        console.log("Talk at school");
+        let text = {
+            celeste: {
+                TX01: "...",
+                TX02: "Oh sorry ich hab grad nicht aufgepasst. Worüber habt ihr nochmal geredet?",
+                TX03: "Ich mache mir grad ständig Gedanken um meine Mum, seitdem sie mir ihre Situation erzählt hat.",
+                TX04: "Ihr geht es körperlich nicht so gut, weil sie zurzeit sehr viel arbeitet, deswegen hab ich ihr vorgeschlagen, dass ich mir einen Teilzeitjob suchen werde.",
+                TX05: "Aber ich finde grade keine guten Stellen.",
+                TX06: "Meinst du das Café bei dir in der Nähe?",
+                TX07: "Oh davon hab ich gar nicht gewusst. Dann werde ich mich direkt dort bewerben.",
+                TX08: "Danke Lucia, du hast immer eine Lösung zu meinen Problemen."
+            },
+            lucia: {}
+        };
+    }
+    Novel.scene_2 = scene_2;
 })(Novel || (Novel = {}));
 //# sourceMappingURL=Template.js.map

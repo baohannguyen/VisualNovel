@@ -63,3 +63,6 @@ declare namespace Novel {
 declare namespace Novel {
     function scene_1(): ƒS.SceneReturn;
 }
+declare namespace Novel {
+    function scene_2(): ƒS.SceneReturn;
+}
