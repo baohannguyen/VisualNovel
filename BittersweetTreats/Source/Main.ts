@@ -49,7 +49,8 @@ namespace Novel {
             name: "Celeste",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/celeste_smiling_transparent.png"
+                // neutral: "Images/celeste_smiling_transparent.png"
+                neutral_new: "Images/3.png"
 
             }
 

@@ -32,7 +32,7 @@ declare namespace Novel {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                neutral: string;
+                neutral_new: string;
             };
         };
         celeste_mum: {
@@ -45,7 +45,7 @@ declare namespace Novel {
             origin: ƒ.ORIGIN2D;
             pose: {};
         };
-        sophia: {
+        sophie: {
             name: string;
         };
         evan: {
@@ -65,4 +65,19 @@ declare namespace Novel {
 }
 declare namespace Novel {
     function scene_2(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_3(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_4(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_6(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_7(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_8(): ƒS.SceneReturn;
 }

@@ -33,7 +33,7 @@ namespace Novel {
 
         //ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);
-        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral, ƒS.positionPercent(30, 90));
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
         await ƒS.update();
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
