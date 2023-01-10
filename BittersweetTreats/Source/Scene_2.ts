@@ -32,6 +32,8 @@ namespace Novel {
         };
 
         await ƒS.Location.show(locations.classroom);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
+        await ƒS.update();
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);
         
     }

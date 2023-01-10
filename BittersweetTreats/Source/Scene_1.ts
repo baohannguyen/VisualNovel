@@ -31,8 +31,10 @@ namespace Novel {
             }
         };
 
+        //ƒS.Speech.setTickerDelays(40, 500);
         //ƒS.Speech.hide();
         await ƒS.Location.show(locations.living_room);
+        await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
         await ƒS.update();
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX01);

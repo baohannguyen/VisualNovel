@@ -4,7 +4,13 @@ var Novel;
     Novel.ƒ = FudgeCore;
     Novel.ƒS = FudgeStory;
     console.log("Bittersweet Treats starting");
-    Novel.transition = {};
+    Novel.transition = {
+        stripes: {
+            duration: 1,
+            alpha: "Transitions/005.jpg",
+            edge: 0.2
+        }
+    };
     Novel.sounds = {};
     Novel.music = {};
     Novel.locations = {
@@ -165,8 +171,10 @@ var Novel;
                 TX11: "Danke mein Schatz."
             }
         };
+        //ƒS.Speech.setTickerDelays(40, 500);
         //ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
+        await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
@@ -208,6 +216,8 @@ var Novel;
             }
         };
         await Novel.ƒS.Location.show(Novel.locations.classroom);
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(25, 100));
+        await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX01);
     }
     Novel.scene_2 = scene_2;

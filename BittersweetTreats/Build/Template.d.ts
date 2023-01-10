@@ -1,7 +1,13 @@
 declare namespace Novel {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    let transition: {};
+    let transition: {
+        stripes: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+    };
     let sounds: {};
     let music: {};
     let locations: {

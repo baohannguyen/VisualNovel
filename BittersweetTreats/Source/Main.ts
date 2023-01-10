@@ -5,6 +5,11 @@ namespace Novel {
     console.log("Bittersweet Treats starting");
 
     export let transition = {
+        stripes: {
+            duration: 1,
+            alpha: "Transitions/005.jpg",
+            edge: 0.2
+        }
 
     };
 
