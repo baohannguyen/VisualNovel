@@ -71,6 +71,8 @@ namespace Novel {
   // hier kommt alles rein, was der Spieler speichern möchte
   export let dataForSave = {
     nameProtagonist: "",
+    aisakaScore: 0, //Scores werden hier gespeichert
+    pickedMeterScene: false,
     interrupt: false, //booleasche werte kann man hier festlegen und danach im Dialog wiederverwenden
     characterPoints: 0
   };
@@ -166,15 +168,16 @@ namespace Novel {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
     buttonFunctions("Close");
     let scenes: ƒS.Scenes = [
-      { scene: firstScene, name: "Park Scene" },
-      { scene: secondScene, name: "Sunset Scene" },
-      { id: "", scene: thirdScene, name: "Test", next: ""}
+      //{ scene: firstScene, name: "Park Scene" },
+      //{ scene: secondScene, name: "Sunset Scene" },
+      //{ id: "", scene: thirdScene, name: "Test", next: ""}
+      { scene: meterBar, name: "Meter Bar Scene" }
       // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
       // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
       //{ scene: thirdScene, name: "Animation Scene" }
     ];
 
-    let uiElement: HTMLElement = document.querySelector("[type=interface]");
+    let uiElement: HTMLElement = document.querySelector("[type=interface]"); //damit wird die Meter Bar gespeichert und geht nicht verloren
     dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
 
     // start the sequence

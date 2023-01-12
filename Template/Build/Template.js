@@ -66,6 +66,8 @@ var Novel;
     // hier kommt alles rein, was der Spieler speichern möchte
     Novel.dataForSave = {
         nameProtagonist: "",
+        aisakaScore: 0,
+        pickedMeterScene: false,
         interrupt: false,
         characterPoints: 0
     };
@@ -148,14 +150,15 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
         buttonFunctions("Close");
         let scenes = [
-            { scene: Novel.firstScene, name: "Park Scene" },
-            { scene: Novel.secondScene, name: "Sunset Scene" },
-            { id: "", scene: Novel.thirdScene, name: "Test", next: "" }
+            //{ scene: firstScene, name: "Park Scene" },
+            //{ scene: secondScene, name: "Sunset Scene" },
+            //{ id: "", scene: thirdScene, name: "Test", next: ""}
+            { scene: Novel.meterBar, name: "Meter Bar Scene" }
             // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
             // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
             //{ scene: thirdScene, name: "Animation Scene" }
         ];
-        let uiElement = document.querySelector("[type=interface]");
+        let uiElement = document.querySelector("[type=interface]"); //damit wird die Meter Bar gespeichert und geht nicht verloren
         Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
         // start the sequence
         Novel.ƒS.Progress.go(scenes);
@@ -195,6 +198,32 @@ var Novel;
         Novel.ƒS.Speech.clear(); //löscht den Text am Ende
     }
     Novel.firstScene = firstScene;
+})(Novel || (Novel = {}));
+var Novel;
+(function (Novel) {
+    async function meterBar() {
+        console.log("Meter Bar");
+        let text = {
+            Komi: {
+                TX01: "Hallo",
+                TX02: "Alles gut soweit?",
+                TX03: "Mein Name ist Komi."
+            }
+        };
+        // Code um die Bar auszublenden (die ersten zwei Codes muss man ausblenden)
+        // dataForSave.pickedMeterScene = true;
+        // document.getElementsByName("aisakaScore").forEach(meterStuff => meterStuff.hidden = true);
+        // document.getElementById("scoreForAisaka").style.display = "none";
+        Novel.dataForSave.aisakaScore += 50; // 50 Punkte würden dazukommen
+        console.log(Novel.dataForSave.aisakaScore);
+        await Novel.ƒS.Location.show(Novel.locations.park);
+        await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(30, 100));
+        await Novel.ƒS.update();
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX01);
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX02);
+        await Novel.ƒS.Speech.tell(Novel.characters.komi, text.Komi.TX03);
+    }
+    Novel.meterBar = meterBar;
 })(Novel || (Novel = {}));
 var Novel;
 (function (Novel) {

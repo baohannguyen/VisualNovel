@@ -55,6 +55,8 @@ declare namespace Novel {
     };
     let dataForSave: {
         nameProtagonist: string;
+        aisakaScore: number;
+        pickedMeterScene: boolean;
         interrupt: boolean;
         characterPoints: number;
     };
@@ -64,6 +66,9 @@ declare namespace Novel {
     function firstScene(): ƒS.SceneReturn;
 }
 declare namespace Novel {
+}
+declare namespace Novel {
+    function meterBar(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function secondScene(): ƒS.SceneReturn;
