@@ -19,6 +19,11 @@
       <name></name>
       <content></content>
     </speech>
+    <div type="interface">
+      <input id="scoreForAisaka" type="text" value="Aisaka" disabled>
+      <!-- für value der Skala; Füllung -->
+      <meter id="aisakaMeter" name="aisakaScore" min="0" max="100" disabled></meter>
+    </div>
     <dialog type="text">
       The content of a page of text for reading
     </dialog>
@@ -27,11 +32,6 @@
     </dialog>
     
   </scene>
-  <div type="interface">
-    <input id="scoreForAisaka" type="text" value="Aisaka" disabled>
-    <!-- für value der Skala; Füllung -->
-    <meter id="aisakaMeter" name="aisakaScore" min="0" max="100" disabled></meter>
-  </div>
   <dialog type="splash" open>
     <img id="FudgeStoryLogo" theme="light" /> <!-- use "light" or "dark" -->
     <p>
