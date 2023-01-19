@@ -231,6 +231,8 @@ var Novel;
                 TX01: "Innerhalb einer Woche hat sich Celeste für die Stelle beworben. Nach ein paar Tagen hat sie eine Antwort bekommen und muss, um die Stelle zu kriegen Probearbeiten."
             }
         };
+        await Novel.ƒS.Location.show(Novel.locations.living_room);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.narrator.TX01);
     }
     Novel.scene_3 = scene_3;
 })(Novel || (Novel = {}));
