@@ -42,7 +42,7 @@ var Novel;
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/2.png"
+                neutral_new: "Images/4.png"
             }
         },
         celeste_mum: {
@@ -175,8 +175,8 @@ var Novel;
         //ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
-        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(25, 100));
-        await Novel.ƒS.update();
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(25, 130));
+        await Novel.ƒS.update(2);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
