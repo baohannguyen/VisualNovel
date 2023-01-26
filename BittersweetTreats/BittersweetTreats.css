@@ -63,11 +63,12 @@ speech {
   bottom: 0px;
   left: 0px;
   color: beige;
-  /* background-color: rgb(94, 94, 94); */
-  background-color: transparent;
+  background-color: rgb(94, 94, 94);
+
   width: 100%;
   height: 13%;
 }
+
 
 speech content {
   color: rgb(255, 255, 255);
