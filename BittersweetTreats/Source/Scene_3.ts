@@ -8,8 +8,9 @@ namespace Novel {
             }
         };
 
-        await ƒS.Location.show(locations.living_room);
-        await ƒS.Speech.tell(characters.celeste_mum, text.narrator.TX01);
+        await ƒS.Location.show(locations.blackScreen);
+        await ƒS.update();
+        await ƒS.Speech.tell(characters.narrator, text.narrator.TX01);
         
     }
 }

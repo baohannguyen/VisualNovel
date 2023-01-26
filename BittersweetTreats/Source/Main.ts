@@ -41,6 +41,14 @@ namespace Novel {
         street: {
             name: "Street Rain",
             background: "Background/street_rain.png"
+        },
+        office: {
+            name: "Office",
+            background: "Background/office.png"
+        },
+        blackScreen: {
+            name: "Narrator Talk",
+            background: "Background/black_screen.png"
         }
 
 
@@ -55,7 +63,7 @@ namespace Novel {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/4.png"
+                neutral_new: "Images/2.png"
 
             }
 
@@ -64,6 +72,7 @@ namespace Novel {
             name: "Mutter",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
+                sad: "Images/mum.png"
 
             }
 
@@ -179,8 +188,15 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            { scene: scene_1, name: "Conversation in the living room" }
+            // { scene: scene_1, name: "Conversation in the living room" }
+            // { scene: scene_2, name: "School" },
+            // { scene: scene_3, name: "Narrator" },
+            // { scene: scene_4, name: "Talk with Evan" },
+            // { scene: scene_6, name: "Good Ending" },
+            // { scene: scene_7, name: "Normal Ending" },
+            { scene: scene_8, name: "Bad Ending" }
         ];
+        
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");
         dataForSave = ƒS.Progress.setData(dataForSave, uiElement);

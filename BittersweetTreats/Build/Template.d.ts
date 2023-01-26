@@ -31,6 +31,14 @@ declare namespace Novel {
             name: string;
             background: string;
         };
+        office: {
+            name: string;
+            background: string;
+        };
+        blackScreen: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
         narrator: {};
@@ -44,7 +52,9 @@ declare namespace Novel {
         celeste_mum: {
             name: string;
             origin: ƒ.ORIGIN2D;
-            pose: {};
+            pose: {
+                sad: string;
+            };
         };
         lucia: {
             name: string;
