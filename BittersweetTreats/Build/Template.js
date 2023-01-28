@@ -21,6 +21,7 @@ var Novel;
         oh: "Audio/Sound/oh_disappointed_female.mp3",
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
+        sigh_female: "Audio/Sound/sigh_female.mp3",
         spoon_stir: "Audio/Sound/sppon_stir_audio.mp3"
     };
     Novel.music = {
@@ -94,12 +95,21 @@ var Novel;
     Novel.dataForSave = {};
     // export function addAnimation(): ƒS.AnimationDefinition {
     //     return {
-    //       start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-    //       end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-    //       duration: 1,
-    //       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    //         start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
+    //         end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
+    //         duration: 1,
+    //         playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //     };
-    //   }
+    // }
+    function examAnimation() {
+        return {
+            start: { translation: Novel.ƒS.positionPercent(120, 100) },
+            end: { translation: Novel.ƒS.positionPercent(70, 100) },
+            duration: 3,
+            playmode: Novel.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Novel.examAnimation = examAnimation;
     // Menü
     let menuButtons = {
         save: "Save",
@@ -155,8 +165,8 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" },
-            { scene: Novel.scene_2, name: "School" }
+            { scene: Novel.scene_1, name: "Conversation in the living room" },
+            // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
             // { scene: scene_4, name: "Talk with Evan" },
             // { scene: scene_6, name: "Good Ending" },
@@ -176,48 +186,55 @@ var Novel;
         let text = {
             celeste: {
                 TX01: "Alles gut bei dir Mama? Du siehst erschöpft aus.",
-                TX02: "<i>Stimmt, letzten Monat hat sich Mama ihr Handgelenk gebrochen, weil sie hingefallen ist. Eigentlich soll sie weniger arbeiten und sich mehr ausruhen.</i>",
-                TX03: "Kannst du nicht mal nachfragen, ob du in den nächsten Wochen weniger arbeiten kannst?",
-                TX04: "So wie es aussieht, konnte deine Hand sich nicht komplett ausruhen.",
-                TX05: "Nicht das es noch schlimmer wird.",
-                TX06: "Dann lass mich nach einem Job suchen!",
-                TX07: "Wenn ich einen Teilzeitjob habe, dann kommen wir noch gut über die Runden.",
-                TX08: "Mach dir da keine Sorgen Mama.",
-                TX09: "Wenn du jetzt weniger arbeitest, hast du ja mehr Zeit für Grace und kannst auf sie aufpassen. Sie wird sich bestimmt freuen, dich öfters im Haus zu sehen.",
-                TX10: "Außerdem brauchst du wirklich eine Pause, sonst belastest du dich nur noch mehr damit.",
-                TX11: "Ja werde ich machen."
+                TX02: "<i>Stimmt, letzten Monat hat sich Mama ihr Handgelenk gebrochen, weil sie hingefallen ist.</i>",
+                TX03: "<i>Eigentlich soll sie weniger arbeiten und sich mehr ausruhen.</i>",
+                TX04: "Kannst du nicht mal nachfragen, ob du in den nächsten Wochen weniger arbeiten kannst?",
+                TX05: "So wie es aussieht, konnte deine Hand sich nicht komplett ausruhen.",
+                TX06: "Nicht das es noch schlimmer wird.",
+                TX07: "Dann lass mich nach einem Job suchen!",
+                TX08: "Wenn ich einen Teilzeitjob habe, dann kommen wir noch gut über die Runden.",
+                TX09: "Mach dir da keine Sorgen Mama.",
+                TX10: "Wenn du jetzt weniger arbeitest, hast du mehr Zeit für Grace und kannst auf sie aufpassen.",
+                TX11: "Sie wird sich bestimmt freuen, dich öfters im Haus zu sehen, um mit dir Zeit zu verbringen.",
+                TX12: "Außerdem brauchst du wirklich eine Pause, sonst belastest du dich nur noch mehr damit.",
+                TX13: "Ja werde ich machen."
             },
             celeste_mum: {
                 TX01: "...",
                 TX02: "Hallo mein Schatz.",
                 TX03: "Nicht wirklich, in letzter Zeit fällt es mir schwer meine Arbeit zu machen, weil ich Schmerzen in mein Handgelenk habe.",
                 TX04: "Vor allem seit ich sie vor einem Monat gebrochen habe.",
-                TX05: "Darüber habe ich mir auch schon Gedanken gemacht, aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
-                TX06: "Bist du dir sicher?",
-                TX07: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
-                TX08: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
-                TX09: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
-                TX10: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
-                TX11: "Danke mein Schatz."
+                TX05: "Darüber habe ich mir auch schon Gedanken gemacht.",
+                TX06: "Aber das wird finanziell schwierig für uns, wenn ich weniger arbeiten werde, weil sich mein Gehalt dadurch kürzen wird.",
+                TX07: "Bist du dir sicher?",
+                TX08: "Ich weiß, dass du neben der Schule noch zum Volleyball-Training gehst und auf Grace aufpasst, wann ich immer zur Arbeit gehe.",
+                TX09: "Du sollst auch noch Zeit für dich und deine Freunde haben.",
+                TX10: "Hmm da hast du recht, dann werde ich nächste Woche der Arbeit Bescheid geben.",
+                TX11: "Aber falls es für dich zu viel wird, dann gib mir da Bescheid. Ok?",
+                TX12: "Danke mein Schatz."
             }
         };
         //ƒS.Speech.setTickerDelays(40, 500);
         let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
         let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
-        let signalDelay3 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
+        // let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
+        // ƒS.Sound.fade(music.main_theme, 0.5, 5, true);
         Novel.ƒS.Sound.play(Novel.music.main_theme, 0.5, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
-        await signalDelay2();
+        await signalDelay1();
         Novel.ƒS.Sound.play(Novel.sounds.door_opening, 1);
-        await signalDelay3();
+        await signalDelay2();
+        Novel.ƒS.Sound.play(Novel.sounds.sigh_female, 1);
+        await signalDelay2();
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(1);
         await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
-        await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 105));
+        await Novel.ƒS.Character.animate(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.examAnimation());
+        //await ƒS.Character.show(characters.celeste_mum, characters.celeste_mum.pose.sad, ƒS.positionPercent(70, 105));
         await Novel.ƒS.update(1);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX02);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX03);
@@ -226,19 +243,22 @@ var Novel;
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX03);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX04);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX05);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX06);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX05);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX06);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX07);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX07);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX08);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX08);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX09);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX10);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX09);
-        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX11);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX12);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX10);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX11);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX13);
+        await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX12);
     }
     Novel.scene_1 = scene_1;
 })(Novel || (Novel = {}));
@@ -277,11 +297,14 @@ var Novel;
                 TX02: "Ja klar."
             }
         };
+        let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
+        let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
         Novel.ƒS.Sound.play(Novel.music.main_theme, 0.5, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.classroom);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
-        // await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
+        await signalDelay2();
+        await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(25, 100));
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.lucia, text.lucia.TX01);

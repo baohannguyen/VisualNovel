@@ -18,6 +18,7 @@ declare namespace Novel {
         oh: string;
         rain: string;
         sigh_male: string;
+        sigh_female: string;
         spoon_stir: string;
     };
     let music: {
@@ -88,6 +89,7 @@ declare namespace Novel {
     };
     let items: {};
     let dataForSave: {};
+    function examAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Novel {
     function scene_1(): ƒS.SceneReturn;

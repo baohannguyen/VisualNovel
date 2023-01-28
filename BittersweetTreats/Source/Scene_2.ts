@@ -34,11 +34,15 @@ namespace Novel {
             }
         };
 
+        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
+
         ƒS.Sound.play(music.main_theme, 0.5, true);
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
-        // await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
+        await signalDelay2();
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
         await ƒS.update();
         await ƒS.Speech.tell(characters.sophie, text.sophie.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);

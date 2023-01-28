@@ -23,6 +23,7 @@ namespace Novel {
         oh: "Audio/Sound/oh_disappointed_female.mp3",
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
+        sigh_female: "Audio/Sound/sigh_female.mp3",
         spoon_stir: "Audio/Sound/sppon_stir_audio.mp3"
     };
 
@@ -125,12 +126,21 @@ namespace Novel {
 
     // export function addAnimation(): ƒS.AnimationDefinition {
     //     return {
-    //       start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-    //       end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-    //       duration: 1,
-    //       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    //         start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
+    //         end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
+    //         duration: 1,
+    //         playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //     };
-    //   }
+    // }
+
+    export function examAnimation(): ƒS.AnimationDefinition {
+        return {
+            start: { translation: ƒS.positionPercent(120, 100) },
+            end: { translation: ƒS.positionPercent(70, 100)}, //Figur verschwindete, weil Transparenz = 0 ist 
+            duration: 3,
+            playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
 
     // Menü
     let menuButtons = {
@@ -198,15 +208,15 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" },
-            { scene: scene_2, name: "School" }
+            { scene: scene_1, name: "Conversation in the living room" },
+            // { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
             // { scene: scene_4, name: "Talk with Evan" },
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },
             // { scene: scene_8, name: "Bad Ending" }
         ];
-        
+
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");
         dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
