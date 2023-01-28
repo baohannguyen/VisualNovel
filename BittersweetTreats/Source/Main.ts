@@ -14,10 +14,20 @@ namespace Novel {
     };
 
     export let sounds = {
-
+        chuckle_female: "Audio/Sound/chuckle_female.mp3",
+        door_closing: "Audio/Sound/door_closing.mp3",
+        door_opening: "Audio/Sound/door_opening.mp3",
+        cafe_door: "Audio/Sound/cafe_door_opening.mp3",
+        gasping: "Audio/Sound/gasping_audio.mp3",
+        hmm: "Audio/Sound/hmm_audio.mp3",
+        oh: "Audio/Sound/oh_disappointed_female.mp3",
+        rain: "Audio/Sound/rain.mp3",
+        sigh_male: "Audio/Sound/sigh_male.mp3",
+        spoon_stir: "Audio/Sound/sppon_stir_audio.mp3"
     };
 
     export let music = {
+        main_theme: "Audio/Themes/Spring-Flowers.mp3"
 
     };
 
@@ -188,13 +198,13 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" }
-            // { scene: scene_2, name: "School" },
+            // { scene: scene_1, name: "Conversation in the living room" },
+            { scene: scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
             // { scene: scene_4, name: "Talk with Evan" },
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },
-            { scene: scene_8, name: "Bad Ending" }
+            // { scene: scene_8, name: "Bad Ending" }
         ];
         
 

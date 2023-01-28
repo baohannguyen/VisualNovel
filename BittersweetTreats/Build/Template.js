@@ -11,8 +11,21 @@ var Novel;
             edge: 0.2
         }
     };
-    Novel.sounds = {};
-    Novel.music = {};
+    Novel.sounds = {
+        chuckle_female: "Audio/Sound/chuckle_female.mp3",
+        door_closing: "Audio/Sound/door_closing.mp3",
+        door_opening: "Audio/Sound/door_opening.mp3",
+        cafe_door: "Audio/Sound/cafe_door_opening.mp3",
+        gasping: "Audio/Sound/gasping_audio.mp3",
+        hmm: "Audio/Sound/hmm_audio.mp3",
+        oh: "Audio/Sound/oh_disappointed_female.mp3",
+        rain: "Audio/Sound/rain.mp3",
+        sigh_male: "Audio/Sound/sigh_male.mp3",
+        spoon_stir: "Audio/Sound/sppon_stir_audio.mp3"
+    };
+    Novel.music = {
+        main_theme: "Audio/Themes/Spring-Flowers.mp3"
+    };
     Novel.locations = {
         classroom: {
             name: "Classroom",
@@ -142,13 +155,13 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" }
-            // { scene: scene_2, name: "School" },
+            // { scene: scene_1, name: "Conversation in the living room" },
+            { scene: Novel.scene_2, name: "School" }
             // { scene: scene_3, name: "Narrator" },
             // { scene: scene_4, name: "Talk with Evan" },
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },
-            { scene: Novel.scene_8, name: "Bad Ending" }
+            // { scene: scene_8, name: "Bad Ending" }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Novel.dataForSave = Novel.ƒS.Progress.setData(Novel.dataForSave, uiElement);
@@ -189,11 +202,19 @@ var Novel;
             }
         };
         //ƒS.Speech.setTickerDelays(40, 500);
+        let signalDelay1 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(1)]);
+        let signalDelay2 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(2)]);
+        let signalDelay3 = Novel.ƒS.Progress.defineSignal([() => Novel.ƒS.Progress.delay(3)]); //verzögert die Zeit zwischen den Texten
+        Novel.ƒS.Sound.play(Novel.music.main_theme, 0.5, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.living_room);
         await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
+        await signalDelay2();
+        Novel.ƒS.Sound.play(Novel.sounds.door_opening, 1);
+        await signalDelay3();
         await Novel.ƒS.Character.show(Novel.characters.celeste, Novel.characters.celeste.pose.neutral_new, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(1);
+        await signalDelay1();
         await Novel.ƒS.Speech.tell(Novel.characters.celeste_mum, text.celeste_mum.TX01);
         await Novel.ƒS.Speech.tell(Novel.characters.celeste, text.celeste.TX01);
         await Novel.ƒS.Character.show(Novel.characters.celeste_mum, Novel.characters.celeste_mum.pose.sad, Novel.ƒS.positionPercent(70, 105));
@@ -256,8 +277,10 @@ var Novel;
                 TX02: "Ja klar."
             }
         };
+        Novel.ƒS.Sound.play(Novel.music.main_theme, 0.5, true);
         Novel.ƒS.Speech.hide();
         await Novel.ƒS.Location.show(Novel.locations.classroom);
+        await Novel.ƒS.update(Novel.transition.stripes.duration, Novel.transition.stripes.alpha, Novel.transition.stripes.edge);
         // await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
         await Novel.ƒS.update();
         await Novel.ƒS.Speech.tell(Novel.characters.sophie, text.sophie.TX01);

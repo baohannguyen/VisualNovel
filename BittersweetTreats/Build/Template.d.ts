@@ -8,8 +8,21 @@ declare namespace Novel {
             edge: number;
         };
     };
-    let sounds: {};
-    let music: {};
+    let sounds: {
+        chuckle_female: string;
+        door_closing: string;
+        door_opening: string;
+        cafe_door: string;
+        gasping: string;
+        hmm: string;
+        oh: string;
+        rain: string;
+        sigh_male: string;
+        spoon_stir: string;
+    };
+    let music: {
+        main_theme: string;
+    };
     let locations: {
         classroom: {
             name: string;
