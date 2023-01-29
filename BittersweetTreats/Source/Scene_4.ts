@@ -4,16 +4,17 @@ namespace Novel {
         
         let text = {
             celeste: {
-                TX01: "<i>Wow das Café sieht richtig schön aus. Hier ist auch eine Menge los.</i>",
-                TX02: "<i>Ich muss den Chef Evan finden.</i>",
-                TX03: "<i>Er hat gemeint, dass wir uns am Tresen treffen werden.</i>",
-                TX04: "Entschuldigung, ich suche gerade nach ihrem Chef Evan.",
-                TX05: "Wir haben einen Termin vereinbart.",
-                TX06: "Ja genau, es freut mich auch Sie kennenzulernen.",
-                TX07: "<i>Ich muss also für die Kunden Getränke mischen, damit ich die Stelle bekomme.</i>",
-                TX08: "<i>Das werde ich auf jeden Fall hinkriegen.</i>",
-                TX09: "Ja ich habe alles verstanden.",
-                TX10: "Wir können direkt loslegen."
+                TX01: "<i>Wow das Café sieht richtig schön aus.</i>",
+                TX02: "<i>Hier ist auch eine Menge los.</i>",
+                TX03: "<i>Ich muss den Chef Evan finden.</i>",
+                TX04: "<i>Er hat gemeint, dass wir uns am Tresen treffen werden.</i>",
+                TX05: "Entschuldigung, ich suche gerade nach ihrem Chef Evan.",
+                TX06: "Wir haben einen Termin vereinbart.",
+                TX07: "Ja genau, es freut mich auch Sie kennenzulernen.",
+                TX08: "<i>Ich muss also für die Kunden Getränke mischen, damit ich die Stelle bekomme.</i>",
+                TX09: "<i>Das werde ich auf jeden Fall hinkriegen.</i>",
+                TX10: "Ja ich habe alles verstanden.",
+                TX11: "Wir können direkt loslegen."
             },
             evan: {
                 TX01: "Ah Hallo du bist Celeste richtig?",
@@ -32,18 +33,25 @@ namespace Novel {
             }
         };
 
+        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
+        let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
+
         ƒS.Speech.hide();
+        ƒS.Sound.play(music.cafe_theme, 0.3, true);
         await ƒS.Location.show(locations.cafe);
+        await ƒS.update(transition.boxes.duration, transition.boxes.alpha, transition.boxes.edge);
+        await signalDelay2();
         await ƒS.update();
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX03);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
         await ƒS.Speech.tell(characters.evan, text.evan.TX01);
         await ƒS.Speech.tell(characters.evan, text.evan.TX02);
         await ƒS.Speech.tell(characters.evan, text.evan.TX03);
-        await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.evan, text.evan.TX04);
         await ƒS.Speech.tell(characters.evan, text.evan.TX05);
         await ƒS.Speech.tell(characters.evan, text.evan.TX06);
@@ -53,11 +61,16 @@ namespace Novel {
         await ƒS.Speech.tell(characters.evan, text.evan.TX10);
         await ƒS.Speech.tell(characters.evan, text.evan.TX11);
         await ƒS.Speech.tell(characters.evan, text.evan.TX12);
-        await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.evan, text.evan.TX13);
+
+        await signalDelay1();
+
+        await ƒS.Text.print("Oben im Menü siehst jetzt zwei neue Bereiche, die Getränke- und Zutatenliste.<p>Auf die beiden Listen kannst du jederzeit zugreifen, falls du beim Mischen der Getränke Hilfe brauchst</p>");
+        ƒS.Text.close();
         
 
     }
