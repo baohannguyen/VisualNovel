@@ -9,6 +9,11 @@ namespace Novel {
             duration: 1,
             alpha: "Transitions/005.jpg",
             edge: 0.2
+        },
+        boxes: {
+            duration: 1,
+            alpha: "Transitions/24.png",
+            edge: 0.2
         }
 
     };
@@ -28,7 +33,8 @@ namespace Novel {
     };
 
     export let music = {
-        main_theme: "Audio/Themes/Spring-Flowers.mp3"
+        main_theme: "Audio/Themes/Spring-Flowers.mp3",
+        cafe_theme: "Audio/Themes/romantic.mp3"
 
     };
 
@@ -121,6 +127,8 @@ namespace Novel {
     };
 
     export let dataForSave = {
+        celesteScore: 0, //Scores werden hier gespeichert
+        pickedMeterScene: false
 
     };
 
@@ -146,14 +154,42 @@ namespace Novel {
     let menuButtons = {
         save: "Save",
         load: "Load",
-        close: "Close",
-        credits: "Credits"
+        credits: "Credits",
+        drinkList: "Getränkeliste",
+        ingredientList: "Zutatenliste"
     };
 
     let gameMenu: ƒS.Menu;
 
     // true = Menü ist offen 
     let menuIsOpen: boolean = true;
+
+    export function seeCredits(): void {
+      ƒS.Text.print("Bilder:....");  
+    }
+
+    export function seeDrinkList(): void {
+        ƒS.Text.print("Schokotraum: Kakaopulver, Milch und Schlagsahne" + 
+        "<p>Schlafenszeit: Kaffeepulver, Milch und Zucker</p>" +
+        "<p>Matcha Latte: Matchapulver, Milch und Zucker</p>"
+        
+        
+        );
+    }
+
+    export function seeIngredientList(): void {
+        ƒS.Text.print("Kakaopulver" +
+        "<p>Kaffeepulver</p>" +
+        "<p>Matchapulver</p>" +
+        "<p>Milch</p>" +
+        "<p>Schlagsahne</p>" +
+        "<p>Zucker</p>"
+        
+        );
+    }
+
+
+
 
     async function buttonFunctions(_option: string): Promise<void> {
         console.log(_option);
@@ -163,10 +199,21 @@ namespace Novel {
                 break;
             case menuButtons.load:
                 await ƒS.Progress.load();
-            case menuButtons.close:
-                gameMenu.close();
-                menuIsOpen = false; //false = Menü ist zu
                 break;
+            case menuButtons.credits:
+                seeCredits();
+                break;
+            case menuButtons.drinkList:
+                seeDrinkList();
+                break;
+            case menuButtons.ingredientList:
+                seeIngredientList();
+                break;
+
+            // case menuButtons.close:
+            //     gameMenu.close();
+            //     menuIsOpen = false; //false = Menü ist zu
+            //     break;
         }
 
     }
@@ -208,10 +255,10 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            { scene: scene_1, name: "Conversation in the living room" },
-            // { scene: scene_2, name: "School" }
-            // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" },
+            // { scene: scene_1, name: "Conversation in the living room" }
+            // { scene: scene_2, name: "School" },
+            { scene: scene_3, name: "Narrator" },
+            { scene: scene_4, name: "Talk with Evan" }
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },
             // { scene: scene_8, name: "Bad Ending" }

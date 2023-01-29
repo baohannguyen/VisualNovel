@@ -7,6 +7,11 @@ declare namespace Novel {
             alpha: string;
             edge: number;
         };
+        boxes: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
     };
     let sounds: {
         chuckle_female: string;
@@ -23,6 +28,7 @@ declare namespace Novel {
     };
     let music: {
         main_theme: string;
+        cafe_theme: string;
     };
     let locations: {
         classroom: {
@@ -88,8 +94,14 @@ declare namespace Novel {
         };
     };
     let items: {};
-    let dataForSave: {};
+    let dataForSave: {
+        celesteScore: number;
+        pickedMeterScene: boolean;
+    };
     function examAnimation(): ƒS.AnimationDefinition;
+    function seeCredits(): void;
+    function seeDrinkList(): void;
+    function seeIngredientList(): void;
 }
 declare namespace Novel {
     function scene_1(): ƒS.SceneReturn;
@@ -102,6 +114,9 @@ declare namespace Novel {
 }
 declare namespace Novel {
     function scene_4(): ƒS.SceneReturn;
+}
+declare namespace Novel {
+    function scene_5(): ƒS.SceneReturn;
 }
 declare namespace Novel {
     function scene_6(): ƒS.SceneReturn;
