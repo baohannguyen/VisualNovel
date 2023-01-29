@@ -8,12 +8,13 @@ namespace Novel {
                 TX02: "Oh sorry ich hab grad nicht aufgepasst.",
                 TX03: "Worüber habt ihr nochmal geredet?",
                 TX04: "Ich mache mir grad ständig Gedanken um meine Mum, seitdem sie mir ihre Situation erzählt hat.",
-                TX05: "Ihr geht es körperlich gerade nicht so gut, weil sie zurzeit sehr viel arbeitet, deswegen hab ich ihr vorgeschlagen, dass ich mir einen Teilzeitjob suchen werde.",
-                TX06: "Aber ich finde grade keine guten Stellen.",
-                TX07: "Meinst du das Café bei dir in der Nähe?",
-                TX08: "Oh davon hab ich gar nicht gewusst.",
-                TX09: "Dann werde ich mich direkt dort bewerben.",
-                TX10: "Danke Lucia, du hast immer eine Lösung zu meinen Problemen."
+                TX05: "Ihr geht es körperlich gerade nicht so gut, weil sie zurzeit sehr viel arbeitet.",
+                TX06: "Aus dem Grund hab ich ihr vorgeschlagen, dass ich mir einen Teilzeitjob suchen werde.",
+                TX07: "Aber ich finde grade keine guten Stellen.",
+                TX08: "Meinst du das Café bei dir in der Nähe?",
+                TX09: "Oh davon hab ich gar nicht gewusst.",
+                TX10: "Dann werde ich mich direkt dort bewerben.",
+                TX11: "Danke Lucia, du hast immer eine Lösung zu meinen Problemen."
             },
             lucia: {
                 TX01: "Das hört sich echt cool an.",
@@ -34,16 +35,16 @@ namespace Novel {
             }
         };
 
-        let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+        // let signalDelay1: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
         let signalDelay2: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
-        ƒS.Sound.play(music.main_theme, 0.5, true);
         ƒS.Speech.hide();
+        ƒS.Sound.fade(music.main_theme, 0.3, 1, true);
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await signalDelay2();
         await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
-        await ƒS.update();
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.sophie, text.sophie.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX02);
@@ -59,14 +60,17 @@ namespace Novel {
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX07);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX05);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX06);
-        await ƒS.Speech.tell(characters.lucia, text.lucia.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX07);
+        await ƒS.Speech.tell(characters.lucia, text.lucia.TX08);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX09);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX10);
-        await ƒS.Speech.tell(characters.celeste, text.celeste.TX08);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX09);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX10);
+        await ƒS.Speech.tell(characters.celeste, text.celeste.TX11);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX11);
 
+        await signalDelay2();
+        await ƒS.Character.hide(characters.celeste);
     }
 }
