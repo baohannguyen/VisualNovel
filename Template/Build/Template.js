@@ -48,7 +48,7 @@ var Novel;
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "Images/Characters/aisaka_angry.png",
-                happy: "Images/celesteTest2.png",
+                happy: "Images/2.png",
                 upset: "Images/Characters/aisaka_upset.png"
             }
         }

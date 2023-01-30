@@ -81,5 +81,8 @@ namespace Novel {
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX11);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX13);
         await ƒS.Speech.tell(characters.celeste_mum, text.celeste_mum.TX12);
+
+        await ƒS.Character.hide(characters.celeste);
+        await ƒS.Character.hide(characters.celeste_mum);
     }
 }

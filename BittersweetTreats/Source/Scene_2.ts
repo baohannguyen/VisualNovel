@@ -43,13 +43,15 @@ namespace Novel {
         await ƒS.Location.show(locations.classroom);
         await ƒS.update(transition.stripes.duration, transition.stripes.alpha, transition.stripes.edge);
         await signalDelay2();
-        await ƒS.Character.show(characters.celeste, characters.celeste.pose.neutral_new, ƒS.positionPercent(25, 100));
+        await ƒS.Character.show(characters.lucia, characters.lucia.pose.neutral, ƒS.positionPercent(25, 100));
         await ƒS.update(2);
         await ƒS.Speech.tell(characters.sophie, text.sophie.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX02);
         await ƒS.Speech.tell(characters.sophie, text.sophie.TX02);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX03);
+        await ƒS.Character.show(characters.celeste, characters.celeste.pose.school, ƒS.positionPercent(70, 100));
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX01);
         await ƒS.Speech.tell(characters.lucia, text.lucia.TX04);
         await ƒS.Speech.tell(characters.celeste, text.celeste.TX02);

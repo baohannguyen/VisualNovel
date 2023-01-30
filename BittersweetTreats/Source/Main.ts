@@ -29,7 +29,7 @@ namespace Novel {
         rain: "Audio/Sound/rain.mp3",
         sigh_male: "Audio/Sound/sigh_male.mp3",
         sigh_female: "Audio/Sound/sigh_female.mp3",
-        spoon_stir: "Audio/Sound/sppon_stir_audio.mp3"
+        spoon_stir: "Audio/Sound/spoon_stir_audio.mp3"
     };
 
     export let music = {
@@ -80,7 +80,8 @@ namespace Novel {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/2.png"
+                neutral_new: "Images/2.png",
+                school: "Images/1.png"
 
             }
 
@@ -98,6 +99,7 @@ namespace Novel {
             name: "Lucia",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
+                neutral: "Images/10.png"
 
             }
 
@@ -255,10 +257,11 @@ namespace Novel {
         gameMenu = ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes: ƒS.Scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" }
-            // { scene: scene_2, name: "School" },
-            { scene: scene_3, name: "Narrator" },
-            { scene: scene_4, name: "Talk with Evan" }
+            // { scene: scene_1, name: "Conversation in the living room" },
+            // { scene: scene_2, name: "School" }
+            // { scene: scene_3, name: "Narrator" },
+            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: scene_5, name: "Mixing Drinks" }
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },
             // { scene: scene_8, name: "Bad Ending" }

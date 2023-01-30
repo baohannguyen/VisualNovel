@@ -67,6 +67,7 @@ declare namespace Novel {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral_new: string;
+                school: string;
             };
         };
         celeste_mum: {
@@ -79,7 +80,9 @@ declare namespace Novel {
         lucia: {
             name: string;
             origin: ƒ.ORIGIN2D;
-            pose: {};
+            pose: {
+                neutral: string;
+            };
         };
         sophie: {
             name: string;

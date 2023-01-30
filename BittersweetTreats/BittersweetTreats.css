@@ -92,3 +92,27 @@ name {
  
 } */
 
+meter::-webkit-meter-bar { /*webkit ist für chrome */
+  background-color: #ececec;
+}
+
+meter[id="celesteMeter"] {
+  position: absolute;
+  transform:rotate(-90deg);
+  bottom: 50%;
+  left: -14%;
+  width: 35%;
+  height: 10%;
+}
+
+meter[id="celesteMeter"]::-webkit-meter-optimum-value {
+  background-image: linear-gradient(
+    90deg,  
+    #a0e2f3 50%,
+    /* #f28f68 100%,
+    #cf82bf 150%,
+    #719fd1 200% */
+  );
+  /* background-color: #719fd1; */
+}
+
