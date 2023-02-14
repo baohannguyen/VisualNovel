@@ -13,7 +13,8 @@ var Novel;
     };
     Novel.sound = {
         //Theme
-        loungeTheme: "Audio/Themes/thelounge.mp3" //« Music by: Bensound.com/royalty-free-music »
+        theme1: "Audio/Themes/Dystopian.ogg",
+        theme2: "Audio/Themes/Nightclub.ogg"
     };
     Novel.locations = {
         park: {
@@ -150,10 +151,10 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
         buttonFunctions("Close");
         let scenes = [
-            //{ scene: firstScene, name: "Park Scene" },
-            //{ scene: secondScene, name: "Sunset Scene" },
+            { scene: Novel.firstScene, name: "Park Scene" },
+            { scene: Novel.secondScene, name: "Sunset Scene" }
             //{ id: "", scene: thirdScene, name: "Test", next: ""}
-            { scene: Novel.meterBar, name: "Meter Bar Scene" }
+            // { scene: meterBar, name: "Meter Bar Scene" }
             // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
             // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
             //{ scene: thirdScene, name: "Animation Scene" }
@@ -179,7 +180,7 @@ var Novel;
         // 80 = die Geschwindigkeit zwischen den Buchstaben
         //let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() -> ƒS.Progress.delay(3)]);
         Novel.ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
-        // ƒS.Sound.play(sound.loungeTheme, 0.4, false);
+        Novel.ƒS.Sound.play(Novel.sound.theme1, 0.4, false);
         await Novel.ƒS.Location.show(Novel.locations.park);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(30, 100));
         await Novel.ƒS.update(); //Nach jeder Szene updaten
@@ -236,6 +237,7 @@ var Novel;
             }
         };
         Novel.ƒS.Speech.hide();
+        Novel.ƒS.Sound.play(Novel.sound.theme2, 0.4, false);
         await Novel.ƒS.Location.show(Novel.locations.sunset);
         await Novel.ƒS.update(Novel.transition.hearts.duration, Novel.transition.hearts.alpha, Novel.transition.hearts.edge);
         await Novel.ƒS.Character.show(Novel.characters.komi, Novel.characters.komi.pose.happy, Novel.ƒS.positionPercent(50, 105));

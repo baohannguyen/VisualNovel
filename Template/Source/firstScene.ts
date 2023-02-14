@@ -14,7 +14,7 @@ namespace Novel {
     //let signalDelay3: ƒS.Signal = ƒS.Progress.defineSignal([() -> ƒS.Progress.delay(3)]);
 
     ƒS.Speech.hide(); //versteckt am Anfang die Textbox, wenn die Szene angezeigt wird
-    // ƒS.Sound.play(sound.loungeTheme, 0.4, false);
+    ƒS.Sound.play(sound.theme1, 0.4, false);
     await ƒS.Location.show(locations.park);
     await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(30, 100));
     await ƒS.update(); //Nach jeder Szene updaten

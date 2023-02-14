@@ -70,7 +70,7 @@ var Novel;
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 // neutral: "Images/celeste_smiling_transparent.png"
-                neutral_new: "Images/2.png",
+                neutral_new: "Images/aisaka_happy.png",
                 school: "Images/1.png"
             }
         },
@@ -78,7 +78,7 @@ var Novel;
             name: "Mutter",
             origin: Novel.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                sad: "Images/mum.png"
+                sad: "Images/aisaka_happy.png"
             }
         },
         lucia: {
@@ -207,10 +207,10 @@ var Novel;
         gameMenu = Novel.ƒS.Menu.create(menuButtons, buttonFunctions, "menuButtonsCSS");
         buttonFunctions("Close");
         let scenes = [
-            // { scene: scene_1, name: "Conversation in the living room" },
-            // { scene: scene_2, name: "School" }
-            // { scene: scene_3, name: "Narrator" },
-            // { scene: scene_4, name: "Talk with Evan" }
+            { scene: Novel.scene_1, name: "Conversation in the living room" },
+            { scene: Novel.scene_2, name: "School" },
+            { scene: Novel.scene_3, name: "Narrator" },
+            { scene: Novel.scene_4, name: "Talk with Evan" },
             { scene: Novel.scene_5, name: "Mixing Drinks" }
             // { scene: scene_6, name: "Good Ending" },
             // { scene: scene_7, name: "Normal Ending" },

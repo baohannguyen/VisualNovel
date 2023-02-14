@@ -9,6 +9,7 @@ namespace Novel {
         };
 
         ƒS.Speech.hide();
+        ƒS.Sound.play(sound.theme2, 0.4, false);
         await ƒS.Location.show(locations.sunset);
         await ƒS.update(transition.hearts.duration, transition.hearts.alpha, transition.hearts.edge);
         await ƒS.Character.show(characters.komi, characters.komi.pose.happy, ƒS.positionPercent(50, 105));

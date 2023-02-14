@@ -14,7 +14,8 @@ namespace Novel {
 
   export let sound = {
     //Theme
-    loungeTheme: "Audio/Themes/thelounge.mp3" //« Music by: Bensound.com/royalty-free-music »
+    theme1: "Audio/Themes/Dystopian.ogg", //« Music by: Bensound.com/royalty-free-music »
+    theme2: "Audio/Themes/Nightclub.ogg"
   };
 
   export let locations = {
@@ -168,10 +169,10 @@ namespace Novel {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctions, "gameMenuCSS"); //eigene CSS Klasse für das Menü
     buttonFunctions("Close");
     let scenes: ƒS.Scenes = [
-      //{ scene: firstScene, name: "Park Scene" },
-      //{ scene: secondScene, name: "Sunset Scene" },
+      { scene: firstScene, name: "Park Scene" },
+      { scene: secondScene, name: "Sunset Scene" }
       //{ id: "", scene: thirdScene, name: "Test", next: ""}
-      { scene: meterBar, name: "Meter Bar Scene" }
+      // { scene: meterBar, name: "Meter Bar Scene" }
       // mit der id kann man eine Szene abspielen, die man als nächstes haben möchte -> praktisch für die versch. Endings
       // VN kann man stoppen, indem man am Ende auf eine leere Szene zuweist, falls man kein Intro/Startbildschirm hat
       //{ scene: thirdScene, name: "Animation Scene" }
